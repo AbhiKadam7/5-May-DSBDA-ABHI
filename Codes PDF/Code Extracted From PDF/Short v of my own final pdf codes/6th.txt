@@ -1,0 +1,32 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Load dataset
+df = pd.read_csv("Iris.csv")
+
+# Encode
+le = LabelEncoder()
+df['Species'] = le.fit_transform(df['Species'])
+
+X = df.drop('Species', axis=1)
+y = df['Species']
+
+# Split
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Model
+model = GaussianNB()
+model.fit(x_train, y_train)
+
+# Prediction
+y_pred = model.predict(x_test)
+
+# Metrics
+cm = confusion_matrix(y_test, y_pred)
+acc = accuracy_score(y_test, y_pred)
+
+print(cm)
+print("Accuracy:", acc)

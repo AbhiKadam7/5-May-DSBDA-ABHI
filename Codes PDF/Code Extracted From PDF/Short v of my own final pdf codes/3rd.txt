@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv("Mall_Customers.csv")
+
+# Grouped statistics
+print(df.groupby("Genre")["Age"].mean())
+print(df.groupby("Genre")["Age"].median())
+print(df.groupby("Genre")["Age"].std())
+
+# -------- IRIS --------
+iris = pd.read_csv("Iris.csv")
+
+print(iris.groupby("Species").mean())
+print(iris.groupby("Species").std())

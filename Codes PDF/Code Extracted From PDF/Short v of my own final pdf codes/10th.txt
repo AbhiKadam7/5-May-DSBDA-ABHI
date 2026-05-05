@@ -1,0 +1,16 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = sns.load_dataset('iris')
+
+# Features and types
+print(df.dtypes)
+
+# Histograms
+df.hist()
+plt.show()
+
+# Boxplots
+df.plot(kind='box')
+plt.show()

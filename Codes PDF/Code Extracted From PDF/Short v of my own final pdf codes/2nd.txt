@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+
+# Create dataset
+df = pd.DataFrame({
+ "Maths":[88,99,np.nan,86,78],
+ "Reading":[67,90,130,89,30],
+ "Writing":[55,180,np.nan,43,91],
+ "Placement":[86,90,45,np.nan,20]
+})
+
+# Handle missing values
+df["Maths"].fillna(df["Maths"].mean(), inplace=True)
+df["Writing"].fillna(df["Writing"].median(), inplace=True)
+df["Placement"].fillna(df["Placement"].mode()[0], inplace=True)
+
+# Handle outliers
+df["Writing"] = np.where(df["Writing"] > 100, df["Writing"].mean(), df["Writing"])
+
+# Transformation (Normalization)
+scaler = MinMaxScaler()
+df["Maths"] = scaler.fit_transform(df[["Maths"]])
+
+# Log transformation
+df["Reading"] = np.log(df["Reading"])
+
+print(df)

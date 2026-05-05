@@ -1,0 +1,30 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample text
+text = "This is a sample document for NLP processing"
+
+# Tokenization
+words = word_tokenize(text)
+
+# Stopwords removal
+stop_words = set(stopwords.words('english'))
+filtered = [w for w in words if w not in stop_words]
+
+# POS tagging
+print(nltk.pos_tag(filtered))
+
+# Stemming
+ps = PorterStemmer()
+print([ps.stem(w) for w in filtered])
+
+# Lemmatization
+lm = WordNetLemmatizer()
+print([lm.lemmatize(w) for w in filtered])
+
+# TF-IDF
+tfidf = TfidfVectorizer()
+print(tfidf.fit_transform([text]).toarray())

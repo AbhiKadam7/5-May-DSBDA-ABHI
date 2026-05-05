@@ -1,0 +1,32 @@
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+# Load dataset
+df = pd.read_csv("Uber Request Data.csv")
+
+# Missing values
+print(df.isnull().sum())
+
+# Statistics
+print(df.describe())
+
+# Data types
+print(df.dtypes)
+
+# Shape
+print(df.shape)
+
+# Convert datatype
+df['Request timestamp'] = pd.to_datetime(df['Request timestamp'], dayfirst=True)
+
+# Convert categorical to numeric
+df['Pickup point'] = df['Pickup point'].map({'Airport':0, 'City':1})
+
+# Fill missing values
+df['Driver id'] = df['Driver id'].fillna(df['Driver id'].mean())
+
+# Normalization
+scaler = MinMaxScaler()
+df[['Driver id','Request id']] = scaler.fit_transform(df[['Driver id','Request id']])
+
+print(df)

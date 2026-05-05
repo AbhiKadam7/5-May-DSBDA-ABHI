@@ -1,0 +1,10 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = sns.load_dataset('titanic')
+
+# Histogram for fare
+sns.histplot(df['fare'], bins=10)
+
+plt.show()
