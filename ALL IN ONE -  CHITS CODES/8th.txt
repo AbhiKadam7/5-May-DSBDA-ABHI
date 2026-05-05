@@ -1,0 +1,23 @@
+8th 
+
+ 
+1 import pandas as pd 
+
+2 import numpy as np 
+
+3 import matplotlib.pyplot as plt 
+
+4 import seaborn as sns 
+
+5 titanic=sns.load_dataset('titanic') 
+
+6 sns.displot(titanic['age'],bins=10) 
+
+7 sns.displot(titanic['fare'],bins=10) 
+
+8 sns.countplot(x='survived' ,data=titanic) 
+
+
+9   sns.countplot(x='sex',data=titanic) 
+
+10. sns.countplot(x='pclass',data=titanic) 

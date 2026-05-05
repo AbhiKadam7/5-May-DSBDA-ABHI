@@ -1,0 +1,128 @@
+7th
+
+
+1 !pip install nltk 
+
+2 import nltk 
+
+3 from nltk.tokenize import sent_tokenize 
+
+4 from nltk.tokenize import word_tokenize 
+
+5 from nltk.corpus import stopwords 
+
+6 from nltk.stem import PorterStemmer 
+
+
+7 from nltk.stem import 
+  WordNetLemmatizer 
+
+8  import re 
+
+
+9 from sklearn.feature_extraction.text 
+  import TfidfVectorizer 
+
+10. nltk.download('punkt') 
+
+11. nltk.download('stopwords') 
+
+12. nltk.download('wordnet') 
+
+13. nltk.download('averaged_perceptron_tagg
+    er') 
+
+14. text="Tokenization replaces a sensitive 
+    data element, for example, a bank 
+    account” 
+
+15. nltk.download('punkt_tab') 
+
+16. sentences=sent_tokenize(text)  
+
+17. print(sentences) 
+
+18. words=word_tokenize(text) 
+
+19. print(words) 
+
+20. stop_words=set(stopwords.words('english'
+    )) 
+
+21. print(stop_words) 
+
+22. text="How to remove stopwords with NLTK 
+    library in PYTHON?" 
+
+23. text=re.sub('[^a-zA-Z]',' ',text) 
+
+24. tokens=word_tokenize(text.lower()) 
+
+25. filtered_text=[] 
+
+26. for w in tokens: 
+
+27.  if w not in stop_words: 
+
+28.  filtered_text.append(w) 
+
+29. print('tokenized text:',tokens) 
+
+30. print('filtered text:',filtered_text) 
+
+31. nltk.download('averaged_perceptron_tagg
+    er_eng') 
+
+32. words1=['ram','before','eating','waiting'] 
+
+33. for w in words1:   
+    print(w,":",nltk.pos_tag([w])) 
+
+34. ps=PorterStemmer()  
+
+35. for w in words1:  
+    print(w,':',ps.stem(w)) 
+
+36. lemmatizer=WordNetLemmatizer()  
+
+37. for w in words1: 
+    print(w,':',lemmatizer.lemmatize(w,pos='v')
+    ) 
+
+38. paragraph= """India is a vast country with 
+    second highest populati on in the world. It 
+    is a country with diverse cultures, 
+    traditions and beliefs. People in India cel 
+    ebrate unity in diversity. Festivals like 
+    Diwali, Holi, Navratri, Ramzan, Christmas 
+    etc. are celebrated by people across India 
+    and create a sense of brotherhood and 
+    cultural unity. Each festiva l has its religious 
+    and cultural importance.""" 
+
+
+39. wn=WordNetLemmatizer() 
+
+40. sentences=sent_tokenize(paragraph) 
+
+41. cleaned_para=[] 
+
+42. for i in range (len(sentences)): 
+    review=re.sub('[^a-zA-Z]',' ',sentences[i]) 
+    review=review.lower() 
+    review=review.split() 
+    review = [wn.lemmatize(word) for word in 
+    review if not word in set(stopwords 
+    review=' '.join(review) 
+    cleaned_para.append(review) 
+
+
+43. print(cleaned_para) 
+
+44. tfidf=TfidfVectorizer() 
+
+45. x=tfidf.fit_transform(cleaned_para).toarray
+    () 
+
+
+46. print(x) 

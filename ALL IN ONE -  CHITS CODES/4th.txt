@@ -1,0 +1,90 @@
+4th  
+        
+1 import pandas as pd 
+2 from sklearn.preprocessing import 
+  MinMaxScaler 
+
+
+3 from sklearn.linear_model import 
+  LinearRegression 
+
+4 df = pd.read_csv('BostonHousing.csv') 
+
+5 info describe isnull.sum 
+
+6 scaled_df = pd.DataFrame() 
+
+7 scaler = MinMaxScaler() 
+
+8   scaled_df[['crim', 'zn', 'indus', 'chas', 'nox', 
+   'rm', 'age', 'dis', 'rad', 'tax', 
+9  'ptratio', 'b', 'lstat',]] = pd.DataFrame(scaler.fit_transform(df[['cri
+    m', 'zn', 'indus', 'chas', 'nox', 'rm', 'age', 
+   'dis', 'rad', 'tax', 
+10   'ptratio', 'b', 'lstat',]]))
+
+
+
+11. x = scaled_df 
+
+12. y = df['medv'] 
+
+13. from sklearn.model_selection import 
+    train_test_split 
+
+
+14. x_train, x_test, y_train,y_test = 
+    train_test_split(x,y,test_size=0.2,random_s
+    tate=42) 
+
+
+15. model = LinearRegression() 
+
+16. model.fit(x_train.values,y_train.values) 
+
+17. y_train_preds = 
+    model.predict(x_train.values) 
+
+18. y_test_preds = 
+    model.predict(x_test.values) 
+
+19. df1 = pd.DataFrame({'Actual' : 
+    y_train,'Predicted' : y_train_preds}) 
+
+20. df2 = pd. DataFrame({'Actual' : 
+    y_test,'Predicted' : y_test_preds}) 
+
+21. from sklearn.metrics import 
+    mean_squared_error, r2_score 
+
+22. train_accuracy_mse = 100
+    mean_squared_error(y_train,y_train_pred
+    s) 
+
+
+23. test_accuracy_mse = 100
+    mean_squared_error(y_test,y_test_preds) 
+
+
+24. train_accuracy_r2 = 100
+    mean_squared_error(y_train,y_train_pred
+    s) 
+
+
+25. test_accuracy_r2 = 100
+    mean_squared_error(y_test,y_test_preds) 
+
+26. import matplotlib.pyplot as plt 
+
+27. plt.scatter(y_train,y_train_preds,c='red',m
+    arker='o',label='Train Data') 
+
+
+28. plt.scatter(y_test,y_test_preds,c='blue',ma
+    rker='s',label='Test Data') 
+
+
+29. plt.plot() 
+
+
+30. plt.show() 

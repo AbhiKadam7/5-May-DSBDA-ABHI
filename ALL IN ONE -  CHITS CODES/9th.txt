@@ -1,0 +1,19 @@
+9th
+
+
+1 import pandas as pd 
+
+2 import numpy as np 
+
+3 import matplotlib.pyplot as plt 
+
+4import seaborn as sns 
+
+5 titanic=sns.load_dataset('titanic')  
+
+6 titanic.head() 
+
+7 sns.boxplot(x='sex',y='age',data=titanic) 
+
+8 sns.boxplot(x='sex',y='age',data=titanic,hu
+  e='survived') 

@@ -1,0 +1,51 @@
+10th  
+
+
+
+1 import pandas as pd 
+
+2 import numpy as np 
+
+3 import matplotlib.pyplot as plt 
+
+4 import seaborn as sns 
+
+5 iris=sns.load_dataset('iris')  
+
+6 iris.head() 
+
+7 sns.histplot(iris['sepal_length'],bins=10) 
+
+8 plt.show() 
+
+9 sns.histplot(iris['sepal_width'],bins=10) 
+
+10. plt.show() 
+
+11. sns.histplot(iris['petal_length'],bins=10) 
+
+12. plt.show() 
+
+13. sns.histplot(iris['petal_width'],bins=10) 
+
+14. plt.show() 
+
+15. sns.boxplot(x='species',y='sepal_length',da
+    ta=iris) 
+
+16. plt.show() 
+
+17. sns.boxplot(x='species',y='sepal_width',dat
+    a=iris) 
+
+18. plt.show() 
+
+19. sns.boxplot(x='species',y='petal_length',da
+    ta=iris) 
+
+20. plt.show() 
+
+21. sns.boxplot(x='species',y='petal_width',dat
+    a=iris) 
+
+22. plt.show()

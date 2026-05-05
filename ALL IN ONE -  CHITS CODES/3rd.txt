@@ -1,0 +1,52 @@
+3rd  
+
+1 import pandas as pd 
+
+2 from sklearn.preprocessing import 
+  OneHotEncoder 
+
+3 df = pd.read_csv('Mall_Customers.csv') 
+
+4 df.groupby(['Gender'])['Age'].mean() 
+
+ 
+5 df.groupby(['Gender'])['Age'].median() 
+
+6 df.groupby(['Gender'])['Age'].std() 
+
+7 df.groupby(['Gender'])['Age'].min() 
+
+8 df.groupby(['Gender'])['Age'].max() 
+
+9 df.groupby(['Gender'])['Annual Income 
+  (k$)'].mean() median std min max 
+
+
+10. df.groupby(['Gender'])['Spending Score (1
+    100)'].mean() median std min max 
+
+11. df.groupby(['Gender']).mean() median std 
+    min max 
+
+12. enc = OneHotEncoder() 
+
+13. enc_df = 
+    pd.DataFrame(enc.fit_transform(df[['Gend
+    er']]).toarray()) 
+
+14. df1 = df.join(enc_df) 
+
+15. iris_df = pd.read_csv('iris.csv') 
+
+16. iris_df.groupby(['variety']).mean() median 
+    std min max 
+
+
+17. iris_df[iris_df.variety=='Setosa'].describe() 
+
+18. iris_df[iris_df.variety=='Versicolor'].describ
+    e()  
+
+
+19. iris_df[iris_df.variety== 
+    ‘Virginica’].describe()  

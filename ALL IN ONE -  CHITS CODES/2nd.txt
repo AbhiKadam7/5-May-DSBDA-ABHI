@@ -1,0 +1,72 @@
+2nd  
+
+
+1 %matplotlib inline
+ 
+2 import numpy as np
+ 
+3 import pandas as pd
+ 
+4 dic = { 
+"Name":["abc","lmn","stu","xyz","efg","kl
+m","rst","uvw",np.nan,"def"], 
+"Maths":[96,88,np.nan,73,44,88,72,84,93,
+92], 
+"Reading":[77,200,88,np.nan,np.nan,91,78
+,np.nan,84,93], 
+"Writing":[86,np.nan,170,87,69,91,np.nan,
+88,92,83], 
+"Placement":[88,76,91,84,96,84,80,78,np.n
+an,93], 
+"Gender":["Male","Female",np.nan,"Fema
+le","Female","Male","Female","Male", 
+"Male", "Male"], 
+"Joining 
+Date":[2018,2019,2022,2018,2017,2023,20
+16,2020,2020,2019] 
+}
+
+ 
+5 df = pd.DataFrame(dic) 
+
+6 df.info() 
+
+7 df["Maths"] = 
+ df["Maths"].fillna(df["Maths"].mean()) 
+
+8 df["Reading"] = 
+  df["Reading"].fillna(df["Reading"].median(
+  )) 
+
+9  df["Writing"] = 
+   df["Writing"].fillna(df["Writing"].mode()) 
+
+10. df["Placement"] = 
+    df["Placement"].fillna(df["Placement"].ma
+    x()) 
+
+11. df.dropna(inplace = True) 
+
+12. df.boxplot(["Maths","Reading", "Writing", 
+    "Placement"]) 
+
+13. from sklearn.preprocessing import 
+    OneHotEncoder 
+
+14. enc = OneHotEncoder() 
+
+15. enc_arr = enc.fit_transform(df[['Gender']]) 
+
+16. enc_pd = pd.DataFrame(enc_arr.toarray()) 
+
+17. df = df.join(enc_pd) 
+
+18. from sklearn.preprocessing import 
+    MinMaxScaler 
+
+19. scaler = MinMaxScaler() 
+
+20. df[['Maths','Reading','Writing','Placement']
+    ] = 
+    scaler.fit_transform(df[['Maths','Reading','
+    Writing','Placement']])  

@@ -1,0 +1,38 @@
+1st 
+
+ 
+1 import pandas as pd 
+
+2 df = pd.read_csv('Uber_Request_Data.csv') 
+
+3 df.info() 
+
+4 df.describe() 
+
+5 from sklearn import preprocessing 
+
+6 import matplotlib.pyplot as plt 
+
+7 min_max_scaler = 
+ preprocessing.MinMaxScaler() 
+
+8 df[['Driver id', 'Request id']] = 
+  min_max_scaler.fit_transform(df[['Driver 
+  id', 'Request id']]) 
+
+
+9 enc_df = pd.DataFrame() 
+
+
+10. enc = preprocessing.OneHotEncoder() 
+
+
+11. enc_arr = enc.fit_transform(df[['Pickup 
+point']]) 
+
+
+12. df[['airport','city']] = 
+pd.DataFrame(enc_arr.toarray()) 
+
+
+13. df.join(enc_df)
