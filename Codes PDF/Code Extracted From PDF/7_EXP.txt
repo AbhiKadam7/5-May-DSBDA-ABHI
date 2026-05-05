@@ -1,0 +1,85 @@
+# Install nltk (run once)
+# pip install nltk
+
+import nltk
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Download required datasets
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+
+# Sample text
+text = "Tokenization replaces a sensitive data element, for example, a bank account number, with a non-sensitive substitute, known as a token. The token is a randomized data string that has no essential or exploitable value or meaning. It is a unique identifier which retains all the pertinent information about the data without compromising its security"
+
+# Sentence tokenization
+sentences = sent_tokenize(text)
+print(sentences)
+
+# Word tokenization
+words = word_tokenize(text)
+print(words)
+
+# Stopwords
+stop_words = set(stopwords.words('english'))
+print(stop_words)
+
+# Remove stopwords
+text = "How to remove stopwords with NLTK library in PYTHON?"
+text = re.sub('[^a-zA-Z]', ' ', text)
+tokens = word_tokenize(text.lower())
+
+filtered_text = []
+for w in tokens:
+    if w not in stop_words:
+        filtered_text.append(w)
+
+print('tokenized text:', tokens)
+print('filtered text:', filtered_text)
+
+# POS tagging
+nltk.download('averaged_perceptron_tagger_eng')
+words1 = ['ram', 'before', 'eating', 'waiting']
+
+for w in words1:
+    print(w, ":", nltk.pos_tag([w]))
+
+# Stemming
+ps = PorterStemmer()
+for w in words1:
+    print(w, ":", ps.stem(w))
+
+# Lemmatization
+lemmatizer = WordNetLemmatizer()
+for w in words1:
+    print(w, ":", lemmatizer.lemmatize(w, pos='v'))
+
+# Paragraph processing
+paragraph = """India is a vast country with second highest population in the world. It is a country with diverse cultures, traditions and beliefs. People in India celebrate unity in diversity. Festivals like Diwali, Holi, Navratri, Ramzan, Christmas etc. are celebrated by people across India and create a sense of brotherhood and cultural unity. Each festival has its religious and cultural importance."""
+
+wn = WordNetLemmatizer()
+sentences = sent_tokenize(paragraph)
+
+cleaned_para = []
+for i in range(len(sentences)):
+    review = re.sub('[^a-zA-Z]', ' ', sentences[i])
+    review = review.lower()
+    review = review.split()
+    review = [wn.lemmatize(word) for word in review if not word in set(stopwords.words('english'))]
+    review = ' '.join(review)
+    cleaned_para.append(review)
+
+print(cleaned_para)
+
+# TF-IDF
+tfidf = TfidfVectorizer()
+x = tfidf.fit_transform(cleaned_para).toarray()
+
+print(x)

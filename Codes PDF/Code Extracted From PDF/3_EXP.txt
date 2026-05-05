@@ -1,0 +1,105 @@
+import pandas as pd
+from sklearn import preprocessing
+
+# Load dataset
+df = pd.read_csv("C:/Users/Dell/Mall_Customers.csv")
+
+# Show full dataset
+print(df)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", df.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", df.tail())
+
+# Shape of dataset
+print("\nShape:", df.shape)
+
+# Info
+print("\nInfo:\n")
+print(df.info())
+
+# Statistics
+print("\nStatistics:\n", df.describe())
+
+# Minimum values
+print("\nMin Values:\n", df.min())
+
+# Maximum values
+print("\nMax Values:\n", df.max())
+
+# Groupby mean
+print("\nMean Age by Genre:\n", df.groupby(["Genre"])["Age"].mean())
+
+# Groupby median
+print("\nMedian Age by Genre:\n", df.groupby("Genre")["Age"].median())
+
+# Groupby std
+print("\nStd Age by Genre:\n", df.groupby(df['Genre'])['Age'].std())
+
+# Mean income by Genre
+print("\nMean Income by Genre:\n", df.groupby('Genre')['Annual Income (k$)'].mean())
+
+# Groupby mean (all columns)
+print("\nGroupby Mean:\n", df.groupby('Genre').mean())
+
+# Groupby median (all columns)
+print("\nGroupby Median:\n", df.groupby(['Genre']).median())
+
+# Groupby std (all columns)
+print("\nGroupby Std:\n", df.groupby(['Genre']).std())
+
+# Show dataset again
+print("\nDataset:\n", df)
+
+# Drop Genre column
+x = df.drop(axis=1, columns=['Genre'])
+
+print("\nAfter Dropping Genre:\n", x)
+
+# Show dataset again
+print("\nDataset:\n", df)
+
+# One Hot Encoding
+enc = preprocessing.OneHotEncoder()
+enc_df = pd.DataFrame(enc.fit_transform(df[['Genre']]).toarray())
+
+print("\nEncoded Data:\n", enc_df)
+
+# Join encoded data
+df_encode = x.join(enc_df)
+
+print("\nFinal Encoded Dataset:\n", df_encode)
+
+
+# -------- IRIS DATASET PART --------
+
+# Load Iris dataset
+dfi = pd.read_csv(r"C:\Users\Dell\Iris.csv")
+
+print("\nIris Dataset:\n", dfi)
+
+# Setosa
+set1 = (dfi['Species'] == 'Iris-setosa')
+print("\nSetosa Stats:\n", dfi[set1].describe())
+
+# Virginica
+set2 = (dfi['Species'] == 'Iris-virginica')
+print("\nVirginica Stats:\n", dfi[set2].describe())
+
+# Versicolor
+set3 = (dfi['Species'] == 'Iris-versicolor')
+print("\nVersicolor Stats:\n", dfi[set3].describe())
+
+# Unique values
+print("\nUnique Species:\n", dfi['Species'].unique())
+
+# Groupby mean
+print("\nGroupby Mean:\n", dfi.groupby(dfi['Species']).mean())
+
+# Groupby median
+print("\nGroupby Median:\n", dfi.groupby(dfi['Species']).median())
+
+# Groupby std
+print("\nGroupby Std:\n", dfi.groupby(dfi['Species']).std())

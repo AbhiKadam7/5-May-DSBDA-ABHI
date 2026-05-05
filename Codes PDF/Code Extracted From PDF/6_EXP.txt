@@ -1,0 +1,73 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB
+
+# Load dataset
+df = pd.read_csv(r"C:\Users\Dell\Iris.csv")
+
+# Show full dataset
+print(df)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", df.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", df.tail())
+
+# Shape of dataset
+print("\nShape:", df.shape)
+
+# Info
+print("\nInfo:\n")
+print(df.info())
+
+# Check missing values
+print("\nMissing Values:\n", df.isnull().sum())
+
+# Label Encoding
+label_encoder = LabelEncoder()
+df['Species'] = label_encoder.fit_transform(df['Species'])
+
+# Split features and target
+x = df.drop('Species', axis=1)
+print("\nFeatures:\n", x)
+
+y = df.Species
+print("\nTarget:\n", y)
+
+# Train test split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+# Model
+gaussian = GaussianNB()
+gaussian.fit(x_train, y_train)
+
+# Show test data
+print("\nTest Data:\n", x_test)
+
+# Actual values
+print("\nActual Values:\n", y_test)
+
+# Prediction
+y_test_pred = gaussian.predict(x_test)
+print("\nPredicted Values:\n", y_test_pred)
+
+# Single prediction
+print("\nSingle Prediction:\n", gaussian.predict([[123, 7.7, 2.8, 6.7, 2.0]]))
+
+# Confusion matrix
+matrix = confusion_matrix(y_test, y_test_pred)
+print("\nConfusion Matrix:\n", matrix)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_test_pred)
+print("\nAccuracy:\n", accuracy)
+
+# Error rate
+error = 1 - accuracy
+print("\nError Rate:\n", error)
+
+# Classification report
+print("\nClassification Report:\n", classification_report(y_test, y_test_pred))

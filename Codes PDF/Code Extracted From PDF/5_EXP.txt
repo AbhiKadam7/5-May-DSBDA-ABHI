@@ -1,0 +1,83 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Load dataset
+df = pd.read_csv(r"C:\Users\Dell\Social_Network_Ads.csv")
+
+# Show full dataset
+print(df)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", df.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", df.tail())
+
+# Shape of dataset
+print("\nShape:", df.shape)
+
+# Info
+print("\nInfo:\n")
+print(df.info())
+
+# Check missing values
+print("\nMissing Values:\n", df.isnull().sum())
+
+# Split features and target
+x = df.drop(['Purchased'], axis=1)
+print("\nFeatures:\n", x)
+
+y = df['Purchased']
+print("\nTarget:\n", y)
+
+# Train test split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25)
+
+# Scaling
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+
+# Model
+classifier = LogisticRegression()
+classifier.fit(x_train, y_train)
+
+# Prediction
+y_test_pred = classifier.predict(x_test)
+
+# Show scaled test data
+print("\nScaled Test Data:\n", x_test)
+
+# Predicted values
+print("\nPredicted Values:\n", y_test_pred)
+
+# Predict single values
+print("\nSingle Prediction 1:\n", classifier.predict([[-0.92863358, 0.31770514]]))
+print("\nSingle Prediction 2:\n", classifier.predict([[2.01088048, 0.22907072]]))
+
+# Confusion matrix
+matrix = confusion_matrix(y_test, y_test_pred)
+print("\nConfusion Matrix:\n", matrix)
+
+# Accuracy
+score = accuracy_score(y_test, y_test_pred)
+print("\nAccuracy:\n", score)
+
+# Classification report
+from sklearn.metrics import classification_report
+print("\nClassification Report:\n", classification_report(y_test, y_test_pred))
+
+# Metrics breakdown
+print('True Positive:', matrix[0][0])
+print('True Negative:', matrix[1][1])
+print('False Positive:', matrix[0][1])
+print('False Negative:', matrix[1][0])
+
+print('Accuracy:', score)
+print('Error Rate:', 1 - score)
+
+precision = matrix[0][0] / (matrix[0][0] + matrix[0][1])
+print('Precision:', precision)

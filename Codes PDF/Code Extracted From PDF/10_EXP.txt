@@ -1,0 +1,55 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+iris = sns.load_dataset('iris')
+
+# Show full dataset
+print(iris)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", iris.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", iris.tail())
+
+# Shape of dataset
+print("\nShape:", iris.shape)
+
+# Info
+print("\nInfo:\n")
+print(iris.info())
+
+# Histogram for sepal_length
+sns.histplot(iris['sepal_length'], bins=10)
+plt.show()
+
+# Histogram for sepal_width
+sns.histplot(iris['sepal_width'], bins=10)
+plt.show()
+
+# Histogram for petal_length
+sns.histplot(iris['petal_length'], bins=10)
+plt.show()
+
+# Histogram for petal_width
+sns.histplot(iris['petal_width'], bins=10)
+plt.show()
+
+# Boxplot for sepal_length
+sns.boxplot(x='species', y='sepal_length', data=iris)
+plt.show()
+
+# Boxplot for sepal_width
+sns.boxplot(x='species', y='sepal_width', data=iris)
+plt.show()
+
+# Boxplot for petal_length
+sns.boxplot(x='species', y='petal_length', data=iris)
+plt.show()
+
+# Boxplot for petal_width
+sns.boxplot(x='species', y='petal_width', data=iris)
+plt.show()

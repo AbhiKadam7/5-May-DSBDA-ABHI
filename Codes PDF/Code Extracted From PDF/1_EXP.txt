@@ -1,0 +1,66 @@
+import pandas as pd
+from sklearn import preprocessing
+
+# Load dataset
+df = pd.read_csv(r"C:\Users\Dell\Uber Request Data.csv")
+
+# Show full dataset
+print(df)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", df.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", df.tail())
+
+# Shape of dataset
+print("\nShape:", df.shape)
+
+# Info
+print("\nInfo:\n")
+print(df.info())
+
+# Statistics
+print("\nStatistics:\n", df.describe())
+
+# Data types
+print("\nData Types:\n", df.dtypes)
+
+# Check missing values
+print("\nMissing Values:\n", df.isnull())
+
+# Check non-missing values
+print("\nNot Null Values:\n", df.notnull())
+
+# Convert Request timestamp to datetime
+df['Request timestamp'] = pd.to_datetime(df['Request timestamp'], format='mixed', dayfirst=True)
+
+# Check data types again
+print("\nUpdated Data Types:\n", df.dtypes)
+
+# Show first 5 rows after conversion
+print("\nUpdated Head:\n", df.head())
+
+# Convert categorical to numerical
+df['Pickup point'] = df['Pickup point'].map({'Airport':0, 'City':1})
+
+# Show updated dataset
+print("\nAfter Encoding:\n", df)
+
+# Check missing values count
+print("\nMissing Values Count:\n", df.isnull().sum())
+
+# Fill missing values in Driver id
+df['Driver id'] = df['Driver id'].fillna(df['Driver id'].mean())
+
+# Check again
+print("\nAfter Filling Missing Values:\n", df.isnull().sum())
+
+# Normalization
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+df[['Driver id','Request id']] = scaler.fit_transform(df[['Driver id','Request id']])
+
+# Final output
+print("\nFinal Processed Data:\n", df)

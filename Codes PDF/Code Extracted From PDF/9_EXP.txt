@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+titanic = sns.load_dataset('titanic')
+
+# Show full dataset
+print(titanic)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", titanic.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", titanic.tail())
+
+# Shape of dataset
+print("\nShape:", titanic.shape)
+
+# Info
+print("\nInfo:\n")
+print(titanic.info())
+
+# Boxplot
+sns.boxplot(x='sex', y='age', data=titanic)
+
+# Boxplot with hue
+sns.boxplot(x='sex', y='age', data=titanic, hue='survived')
+
+# Show plots
+plt.show()

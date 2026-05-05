@@ -1,0 +1,80 @@
+import pandas as pd
+import numpy as np
+from sklearn import preprocessing
+
+# Create dataset
+students = {
+ "name":["john","joy","mathew","ron","henry"],
+ "Maths":[88,99,np.nan,86,78],
+ "Reading":[67,90,130,89,30],
+ "Writing":[55,180,np.nan,43,91],
+ "Placement":[86,90,45,np.nan,20],
+ "Gender":["Male",np.nan,"Male","Male","Female"],
+ "JoiningDate":[2018,2022,2024,2005,2013]
+}
+
+df = pd.DataFrame(students)
+
+# Show full dataset
+print(df)
+
+# Show first 5 rows
+print("\nFirst 5 Rows:\n", df.head())
+
+# Show last 5 rows
+print("\nLast 5 Rows:\n", df.tail())
+
+# Shape of dataset
+print("\nShape:", df.shape)
+
+# Info
+print("\nInfo:\n")
+print(df.info())
+
+# Check missing values
+print("\nMissing Values:\n", df.isnull())
+
+# Check non-missing values
+print("\nNot Null Values:\n", df.notnull())
+
+# Show dataset again
+print("\nDataset:\n", df)
+
+# Fill missing Maths with mean
+df["Maths"] = df["Maths"].fillna(df["Maths"].mean())
+
+print("\nAfter Filling Maths:\n", df)
+
+# Fill missing Writing with median
+df["Writing"] = df["Writing"].fillna(df["Writing"].median())
+
+print("\nAfter Filling Writing:\n", df)
+
+# Fill missing Placement with mode
+df["Placement"] = df["Placement"].fillna(df["Placement"].mode())
+
+print("\nAfter Filling Placement:\n", df)
+
+# Handle outliers in Writing
+df["Writing"] = np.where(df["Writing"] > 100, df["Writing"].mean(), df["Writing"])
+
+print("\nAfter Handling Outliers:\n", df)
+
+# Normalization
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+df["Maths"] = scaler.fit_transform(df[["Maths"]])
+
+print("\nAfter Normalization:\n", df)
+
+# Log transformation
+df["Reading_log"] = np.log(df["Reading"])
+
+print("\nAfter Log Transformation:\n", df)
+
+# Square root transformation
+df["Writing"] = np.sqrt(df["Writing"])
+
+# Final output
+print("\nFinal Processed Data:\n", df)
