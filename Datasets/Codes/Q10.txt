@@ -1,0 +1,10 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("Q10.csv")
+
+df.hist()
+plt.show()
+
+df.plot(kind='box')
+plt.show()

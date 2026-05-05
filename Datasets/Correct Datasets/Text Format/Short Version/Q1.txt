@@ -1,0 +1,16 @@
+Age,Salary,City,Experience,Department,Married
+22,20000,Pune,1,IT,True
+25,25000,Mumbai,2,HR,False
+,30000,Delhi,3,Finance,True
+30,,Pune,5,Sales,False
+28,40000,Mumbai,,IT,True
+35,50000,Delhi,10,HR,False
+40,60000,Nagpur,15,Finance,True
+45,70000,Pune,20,Sales,False
+,80000,Mumbai,12,IT,True
+50,,Delhi,25,HR,False
+27,35000,Pune,4,Sales,True
+29,37000,Nagpur,5,Finance,False
+31,39000,Mumbai,6,IT,True
+33,42000,Delhi,7,HR,False
+36,48000,Pune,9,Finance,True

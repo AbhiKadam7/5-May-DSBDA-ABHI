@@ -1,0 +1,15 @@
+Q8
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("Q8.csv")
+
+plt.hist(df['fare'])
+plt.title("Fare Distribution")
+plt.xlabel("Fare")
+plt.ylabel("Count")
+plt.show()

@@ -1,0 +1,13 @@
+Age,Salary,City,Experience
+22,20000,Pune,1
+25,25000,Mumbai,2
+27,27000,Delhi,3
+30,30000,Pune,4
+28,26000,Mumbai,2
+,29000,Delhi,3
+35,,Pune,5
+40,50000,Mumbai,10
+29,28000,Delhi,3
+31,31000,Pune,
+33,33000,Mumbai,6
+26,24000,Delhi,2

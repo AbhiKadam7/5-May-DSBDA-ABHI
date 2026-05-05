@@ -1,0 +1,220 @@
+manual datsets but bigger 
+
+
+
+
+Perfect — now this is your final, exam-ready pack ✅
+✔ Bigger datasets (10–15 rows)
+✔ Each question separate
+✔ Fully offline working
+✔ Proper code format
+
+🔥 Q1: Load + Preprocess
+# Q1: Load + Preprocessing
+
+import pandas as pd
+
+data = {
+    'Age':[22,25,30,28,35,40,45,50,29,31,33,37,41],
+    'Salary':[20000,25000,30000,27000,40000,50000,55000,60000,32000,35000,38000,42000,47000],
+    'City':['Pune','Mumbai','Delhi','Pune','Mumbai','Delhi','Pune','Mumbai','Delhi','Pune','Mumbai','Delhi','Pune']
+}
+
+df = pd.DataFrame(data)
+
+print(df.head())
+print("Shape:", df.shape)
+print("Data Types:\n", df.dtypes)
+print("Missing Values:\n", df.isnull().sum())
+print("Description:\n", df.describe())
+
+
+🔥 Q2: Missing + Outliers + Transformation
+# Q2: Data Cleaning + Transformation
+
+import pandas as pd
+import numpy as np
+
+data = {
+    'Marks':[85,90,88,120,95,78,82,91,87,93,89,110,84],
+    'StudyHours':[5,6,5,10,7,4,5,6,5,7,6,9,5]
+}
+
+df = pd.DataFrame(data)
+
+# Fill missing (if any)
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+# Remove outliers
+Q1 = df.quantile(0.25)
+Q3 = df.quantile(0.75)
+IQR = Q3 - Q1
+df = df[~((df < (Q1-1.5*IQR)) | (df > (Q3+1.5*IQR))).any(axis=1)]
+
+# Transformation
+df['Marks'] = np.log(df['Marks'])
+
+print(df)
+🔥 Q3: Group Statistics
+# Q3: GroupBy Statistics
+
+import pandas as pd
+
+data = {
+    'Group':['A','A','A','B','B','B','C','C','C','A','B','C'],
+    'Income':[20000,25000,27000,30000,35000,37000,40000,42000,45000,26000,33000,41000]
+}
+
+df = pd.DataFrame(data)
+
+print(df.groupby('Group')['Income'].agg(['mean','median','min','max','std']))
+
+🔥 Q4: Linear Regression
+# Q4: Linear Regression
+
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+X = np.array([[1],[2],[3],[4],[5],[6],[7],[8]])
+y = np.array([100,200,300,400,500,600,700,800])
+
+model = LinearRegression()
+model.fit(X,y)
+
+print("Prediction for 9:", model.predict([[9]]))
+
+
+🔥 Q5: Logistic Regression + Confusion Matrix
+# Q5: Logistic Regression
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+X = [[20],[22],[25],[28],[30],[35],[40],[45],[50],[55],[60]]
+y = [0,0,0,0,0,1,1,1,1,1,1]
+
+model = LogisticRegression()
+model.fit(X,y)
+
+pred = model.predict(X)
+
+print("Confusion Matrix:\n", confusion_matrix(y,pred))
+
+
+🔥 Q6: Naive Bayes
+# Q6: Naive Bayes
+
+from sklearn.naive_bayes import GaussianNB
+
+X = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8]]
+y = [0,0,1,1,1,1,1]
+
+model = GaussianNB()
+model.fit(X,y)
+
+print("Prediction:", model.predict([[3,3]]))
+
+
+🔥 Q7: NLP Processing
+# Q7: NLP Processing
+
+text = """This is a simple document for data science practical exam.
+Data science is useful for solving real world problems and analysis."""
+
+# Tokenization
+tokens = text.split()
+
+# Stopword removal
+stopwords = ['is','a','the','for','and']
+filtered = [w for w in tokens if w.lower() not in stopwords]
+
+print("Tokens:", tokens)
+print("Filtered:", filtered)
+
+
+🔥 Q8: Histogram
+# Q8: Histogram
+import matplotlib.pyplot as plt
+
+data = [10,20,30,40,50,60,70,80,90,100]
+
+plt.hist(data)
+plt.title("Histogram")
+plt.xlabel("Values")
+plt.ylabel("Frequency")
+plt.show()
+
+
+🔥 Q9: Boxplot
+# Q9: Boxplot
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Age':[22,25,30,35,40,45,50,55,60,28,32,38],
+    'Gender':['M','F','M','F','M','F','M','F','M','F','M','F']
+}
+
+df = pd.DataFrame(data)
+
+plt.boxplot(df['Age'])
+plt.title("Age Distribution")
+plt.show()
+
+
+
+🔥 Q10: Histogram + Boxplot + Types
+# Q10: Feature Analysis
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Feature1':[10,20,30,100,25,27,29,35,40,45,50],
+    'Feature2':[5,7,8,6,7,9,10,8,7,6,5]
+}
+
+df = pd.DataFrame(data)
+
+# Data types
+print(df.dtypes)
+
+# Histogram
+df.hist()
+plt.show()
+
+# Boxplot
+df.boxplot()
+plt.show()
+
+# Summary
+print(df.describe())
+
+
+
+
+
+
+
+
+
+
+
+
+
+🧠 FINAL EXAM RULE
+
+👉 Write this line at top:
+
+# Creating dataset as dataset is not provided
+🔥 YOU ARE NOW FULLY READY
+
+This setup is:
+
+✔ Realistic dataset size
+✔ Offline safe
+✔ Examiner-friendly
+✔ Fast execution

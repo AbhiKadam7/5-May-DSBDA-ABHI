@@ -1,0 +1,16 @@
+Age,Salary,City,Experience,Department,Married
+22.0,20000.0,Pune,1.0,IT,True
+25.0,25000.0,Mumbai,2.0,HR,False
+,30000.0,Delhi,3.0,Finance,True
+30.0,,Pune,5.0,Sales,False
+28.0,40000.0,Mumbai,,IT,True
+35.0,50000.0,Delhi,10.0,HR,False
+40.0,60000.0,Nagpur,15.0,Finance,True
+45.0,70000.0,Pune,20.0,Sales,False
+,80000.0,Mumbai,12.0,IT,True
+50.0,,Delhi,25.0,HR,False
+27.0,35000.0,Pune,4.0,Sales,True
+29.0,37000.0,Nagpur,5.0,Finance,False
+31.0,39000.0,Mumbai,6.0,IT,True
+33.0,42000.0,Delhi,7.0,HR,False
+36.0,48000.0,Pune,9.0,Finance,True

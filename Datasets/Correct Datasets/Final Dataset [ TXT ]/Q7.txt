@@ -1,0 +1,11 @@
+text
+I love data science and machine learning
+Python is very easy to learn
+Data preprocessing is important
+Machine learning is powerful
+Natural language processing is fun
+I enjoy coding in Python
+Data analysis helps decision making
+AI is the future
+Text data needs cleaning
+Learning never stops

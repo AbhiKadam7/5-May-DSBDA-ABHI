@@ -1,0 +1,13 @@
+Student,Marks,StudyHours,City
+A,85,5,Pune
+B,90,6,Mumbai
+C,150,10,Delhi
+D,88,5,Pune
+E,30,1,Mumbai
+F,92,6,Delhi
+G,89,5,Pune
+H,200,12,Mumbai
+I,,4,Delhi
+J,75,3,Pune
+K,95,7,Mumbai
+L,40,2,Delhi

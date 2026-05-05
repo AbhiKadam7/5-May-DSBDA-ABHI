@@ -1,0 +1,13 @@
+AgeGroup,Income
+Young,20000
+Young,25000
+Young,22000
+Middle,40000
+Middle,42000
+Middle,41000
+Old,30000
+Old,28000
+Old,29000
+Young,26000
+Middle,39000
+Old,31000

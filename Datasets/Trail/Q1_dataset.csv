@@ -1,0 +1,6 @@
+Age,Salary,City,Experience
+22.0,20000.0,Pune,1.0
+25.0,25000.0,Mumbai,2.0
+,,Delhi,3.0
+30.0,30000.0,Pune,
+28.0,,Mumbai,4.0

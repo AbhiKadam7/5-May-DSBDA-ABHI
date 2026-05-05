@@ -1,0 +1,180 @@
+Manual (own) Dataset Codes 
+
+
+
+🔥 Q1: Load + Preprocess (NO DATASET NEEDED)
+import pandas as pd
+
+# Create dataset
+data = {
+    'Age':[22,25,None,30],
+    'Salary':[20000,25000,None,30000],
+    'City':['Pune','Mumbai','Delhi',None]
+}
+
+df = pd.DataFrame(data)
+
+print(df.head())
+print("Shape:", df.shape)
+print("Data Types:\n", df.dtypes)
+print("Missing:\n", df.isnull().sum())
+print("Description:\n", df.describe())
+
+
+🔥 Q2: Missing + Outliers + Transformation
+import numpy as np
+
+# Fill missing
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+# Remove outliers (IQR)
+Q1 = df.quantile(0.25)
+Q3 = df.quantile(0.75)
+IQR = Q3 - Q1
+
+df = df[~((df < (Q1-1.5*IQR)) | (df > (Q3+1.5*IQR))).any(axis=1)]
+
+# Transformation
+df['Salary'] = np.log(df['Salary'])
+
+print(df)
+
+
+
+🔥 Q3: Group Statistics
+import pandas as pd
+
+data = {
+    'Group':['A','A','B','B'],
+    'Income':[20000,25000,30000,35000]
+}
+
+df = pd.DataFrame(data)
+
+print(df.groupby('Group')['Income'].agg(['mean','min','max','std']))
+
+
+
+🔥 Q4: Linear Regression
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+X = np.array([[1],[2],[3],[4]])
+y = np.array([100,200,300,400])
+
+model = LinearRegression()
+model.fit(X,y)
+
+print("Prediction:", model.predict([[5]]))
+
+
+
+
+🔥 Q5: Logistic Regression + Confusion Matrix
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+X = [[20],[30],[40],[50]]
+y = [0,0,1,1]
+
+model = LogisticRegression()
+model.fit(X,y)
+
+pred = model.predict(X)
+
+print(confusion_matrix(y,pred))
+
+
+
+🔥 Q6: Naive Bayes
+from sklearn.naive_bayes import GaussianNB
+
+X = [[1,2],[2,3],[3,4],[4,5]]
+y = [0,0,1,1]
+
+model = GaussianNB()
+model.fit(X,y)
+
+print(model.predict([[2,2]]))
+
+
+🔥 Q7: NLP (IMPORTANT ⚠️ may need workaround)
+text = "This is a simple document"
+
+# Simple tokenization (NO nltk needed)
+tokens = text.split()
+
+# Remove stopwords manually
+stopwords = ['is','a','the']
+filtered = [w for w in tokens if w not in stopwords]
+
+print("Tokens:", tokens)
+print("Filtered:", filtered)
+
+👉 Avoid nltk (needs download ❌)
+
+
+
+
+🔥 Q8: Histogram
+import matplotlib.pyplot as plt
+
+data = [10,20,30,40,50]
+
+plt.hist(data)
+plt.title("Histogram")
+plt.show()
+
+
+
+
+🔥 Q9: Boxplot
+import matplotlib.pyplot as plt
+
+data = [20,25,30,35,40]
+
+plt.boxplot(data)
+plt.title("Boxplot")
+plt.show()
+
+
+
+
+🔥 Q10: Histogram + Outliers
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Value':[10,20,30,100,25,27]
+}
+
+df = pd.DataFrame(data)
+
+df.hist()
+plt.show()
+
+print(df.describe())
+
+
+
+
+
+🧠 FINAL EXAM STRATEGY
+
+👉 Start EVERY answer like:
+
+# Creating dataset as dataset is not provided
+
+👉 Then write code → you are SAFE ✅
+
+⚠️ VERY IMPORTANT WARNINGS
+❌ Don’t use read_csv()
+❌ Don’t usenltk download
+❌ Don’t depend on seaborn datasets
+🔥 If you want (last boost 🚀)
+
+I can give you:
+
+✅ Most asked questions (priority list)
+✅ Viva answers (very important)
+✅ How to explain each code in viva

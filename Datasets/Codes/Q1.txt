@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv("Q1.csv")
+
+# Show first 5 rows
+print(df.head())
+
+# Check missing values
+print("\nMissing Values:\n", df.isnull().sum())
+
+# Show statistics
+print("\nStatistics:\n", df.describe())
+
+# Show data types
+print("\nData Types:\n", df.dtypes)
+
+# Show shape
+print("\nShape:", df.shape)
+
+# Fill missing values with mean
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+# Normalize numerical columns
+num_cols = df.select_dtypes(include=['int64','float64']).columns
+df[num_cols] = (df[num_cols] - df[num_cols].min()) / (df[num_cols].max() - df[num_cols].min())
+
+# Convert categorical variables
+df = pd.get_dummies(df)
+
+# Final output
+print("\nProcessed Data:\n", df.head())

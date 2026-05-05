@@ -1,0 +1,16 @@
+Age,Income,Student,CreditRating,BuysLaptop
+25,High,No,Fair,No
+30,High,No,Excellent,No
+35,Medium,No,Fair,Yes
+40,Low,Yes,Fair,Yes
+28,Low,Yes,Excellent,No
+32,Medium,Yes,Fair,Yes
+45,Medium,No,Excellent,Yes
+50,Low,Yes,Fair,Yes
+29,High,No,Fair,No
+33,Medium,Yes,Excellent,Yes
+38,Low,No,Fair,Yes
+42,Medium,Yes,Excellent,Yes
+27,Low,No,Fair,No
+31,High,Yes,Excellent,No
+36,Medium,No,Fair,Yes

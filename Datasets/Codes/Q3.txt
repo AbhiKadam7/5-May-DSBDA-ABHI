@@ -1,0 +1,13 @@
+Q3
+
+import pandas as pd
+
+df = pd.read_csv("Q3.csv")
+
+grouped = df.groupby("AgeGroup")["Income"]
+
+print("Mean:\n", grouped.mean())
+print("Median:\n", grouped.median())
+print("Min:\n", grouped.min())
+print("Max:\n", grouped.max())
+print("Std:\n", grouped.std())

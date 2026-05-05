@@ -1,0 +1,23 @@
+Q2
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("Q2.csv")
+
+print(df.isnull().sum())
+
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+df = df[df['Marks'] > 0]
+
+Q1 = df['Marks'].quantile(0.25)
+Q3 = df['Marks'].quantile(0.75)
+IQR = Q3 - Q1
+
+outliers = df[(df['Marks'] < Q1 - 1.5*IQR) | (df['Marks'] > Q3 + 1.5*IQR)]
+print("\nOutliers:\n", outliers)
+
+df['Marks_log'] = np.log(df['Marks'])
+
+print(df.head())

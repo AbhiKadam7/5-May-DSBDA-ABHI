@@ -1,0 +1,16 @@
+Maths,Science,English,Attendance,StudyHours,Gender
+78,85,88,90,2,Male
+56,60,65,70,1,Female
+,75,70,80,2,Male
+90,92,88,95,3,Female
+45,50,55,60,1,Male
+88,,85,85,2,Female
+76,80,78,,2,Male
+10,95,90,85,3,Female
+100,20,30,50,1,Male
+65,70,75,80,2,Female
+72,68,74,88,3,Male
+85,89,90,92,4,Female
+55,60,58,65,1,Male
+92,94,96,98,5,Female
+30,40,35,50,1,Male
