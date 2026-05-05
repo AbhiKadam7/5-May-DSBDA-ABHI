@@ -1,0 +1,39 @@
+# Import libraries
+import pandas as pd
+import numpy as np
+# Load dataset
+df = pd.read_csv("Social_Network_Ads.csv")
+# Display dataset
+df.head()
+# Check dataset info (optional but good for exam)
+df.info()
+# Select features and target variable
+X = df[['Age', 'EstimatedSalary']]
+y = df['Purchased']
+# Split dataset into training and testing
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# Feature scaling (important for logistic regression)
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+# Train Logistic Regression model
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+# Predict values
+y_pred = model.predict(X_test)
+# Confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+cm
+# Extract TN, FP, FN, TP
+TN, FP, FN, TP = cm.ravel()
+TN, FP, FN, TP
+# Calculate performance metrics
+accuracy = (TP + TN) / (TP + TN + FP + FN)
+error_rate = 1 - accuracy
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)
+accuracy, error_rate, precision, recall

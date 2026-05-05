@@ -1,0 +1,36 @@
+# Import libraries
+import pandas as pd
+import numpy as np
+# Create dataset (including missing values, inconsistencies, and outliers)
+data = {
+    'Name': ['A','B','C','D','E','F'],
+    'Math': [80, 90, np.nan, 70, 60, 150],      # 150 is inconsistency/outlier
+    'Science': [85, 88, 92, np.nan, 65, 200],   # 200 is inconsistency/outlier
+    'Attendance': [90, 95, 85, 80, 70, -10]     # -10 is inconsistency
+}
+df = pd.DataFrame(data)
+df
+# Check missing values
+df.isnull().sum()
+# Handle missing values (replace with mean)
+df.fillna(df.mean(numeric_only=True), inplace=True)
+df
+# Handle inconsistencies
+# Marks should be between 0 and 100
+df['Math'] = df['Math'].apply(lambda x: 100 if x > 100 else x)
+df['Science'] = df['Science'].apply(lambda x: 100 if x > 100 else x)
+# Attendance should not be negative
+df['Attendance'] = df['Attendance'].apply(lambda x: 0 if x < 0 else x)
+df
+# Detect outliers using IQR method
+Q1 = df.quantile(0.25)
+Q3 = df.quantile(0.75)
+IQR = Q3 - Q1
+# Show outliers
+((df < (Q1 - 1.5 * IQR)) | (df > (Q3 + 1.5 * IQR)))
+# Remove outliers
+df = df[~((df < (Q1 - 1.5 * IQR)) | (df > (Q3 + 1.5 * IQR))).any(axis=1)]
+df
+# Apply data transformation (log transformation to reduce skewness)
+df['Math_log'] = np.log(df['Math'])
+df

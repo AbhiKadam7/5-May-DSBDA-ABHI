@@ -1,0 +1,29 @@
+# Import libraries
+import pandas as pd
+# Load dataset
+df = pd.read_csv("iris.csv")
+# Display dataset
+df.head()
+# Features and target variable
+X = df.drop('species', axis=1)
+y = df['species']
+# Split dataset into training and testing
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# Train Naive Bayes model
+from sklearn.naive_bayes import GaussianNB
+model = GaussianNB()
+model.fit(X_train, y_train)
+# Predict values
+y_pred = model.predict(X_test)
+# Confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+cm
+# NOTE: Iris is multi-class → TP, FP, TN, FN not directly single values
+# So we compute accuracy directly
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+# Error rate
+error_rate = 1 - accuracy
+accuracy, error_rate

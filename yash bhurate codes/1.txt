@@ -1,0 +1,35 @@
+# Import libraries
+import pandas as pd
+import numpy as np
+# Load dataset
+df = pd.read_csv("data.csv")
+# Display first 5 rows
+df.head()
+# Check shape (rows, columns)
+df.shape
+# Check data types
+df.dtypes
+# Summary statistics
+df.describe()
+# Check missing values
+df.isnull().sum()
+# Variable descriptions (column names)
+df.columns
+# Identify numeric variables
+df.select_dtypes(include=['int64','float64']).columns
+# Identify categorical variables
+df.select_dtypes(include=['object']).columns
+# Convert categorical to category type (optional but good for exam)
+for col in df.select_dtypes(include='object').columns:
+    df[col] = df[col].astype('category')
+# Handle missing values
+df.fillna(df.mean(numeric_only=True), inplace=True)
+# Convert categorical to numeric (One-hot encoding)
+df = pd.get_dummies(df, drop_first=True)
+# Normalize data using MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df_scaled = scaler.fit_transform(df)
+# Convert normalized data back to DataFrame
+df_scaled = pd.DataFrame(df_scaled, columns=df.columns)
+df_scaled.head()

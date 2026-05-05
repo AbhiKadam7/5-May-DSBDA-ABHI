@@ -1,0 +1,43 @@
+# Import libraries
+import nltk
+# Download required resources
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+# Sample document
+text = "Natural Language Processing is very interesting and useful."
+# Tokenization
+from nltk.tokenize import word_tokenize
+tokens = word_tokenize(text)
+tokens
+# POS Tagging
+from nltk import pos_tag
+pos_tag(tokens)
+# Stopwords removal
+from nltk.corpus import stopwords
+filtered = [word for word in tokens if word.lower() not in stopwords.words('english')]
+filtered
+# Stemming
+from nltk.stem import PorterStemmer
+ps = PorterStemmer()
+stemmed = [ps.stem(word) for word in filtered]
+stemmed
+# Lemmatization
+from nltk.stem import WordNetLemmatizer
+lm = WordNetLemmatizer()
+lemmatized = [lm.lemmatize(word) for word in filtered]
+lemmatized
+# TF-IDF representation (use multiple documents for better result)
+from sklearn.feature_extraction.text import TfidfVectorizer
+docs = [
+    "Natural Language Processing is useful",
+    "Machine Learning is interesting",
+    "NLP and ML are part of AI"
+]
+tfidf = TfidfVectorizer()
+result = tfidf.fit_transform(docs)
+# Display TF-IDF matrix
+result.toarray()
+# Display feature names (words)
+tfidf.get_feature_names_out()

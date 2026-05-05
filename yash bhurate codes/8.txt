@@ -1,0 +1,27 @@
+# Import libraries
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load Titanic dataset
+df = sns.load_dataset('titanic')
+# Display dataset
+df.head()
+# Basic information about dataset
+df.info()
+# Summary statistics
+df.describe()
+# Check survival count (pattern)
+df['survived'].value_counts()
+# Survival based on gender (pattern)
+sns.countplot(x='sex', hue='survived', data=df)
+plt.title("Survival Count by Gender")
+plt.show()
+# Survival based on passenger class (pattern)
+sns.countplot(x='pclass', hue='survived', data=df)
+plt.title("Survival Count by Passenger Class")
+plt.show()
+# Histogram of fare
+plt.hist(df['fare'].dropna())
+plt.title("Fare Distribution")
+plt.xlabel("Fare")
+plt.ylabel("Count")
+plt.show()

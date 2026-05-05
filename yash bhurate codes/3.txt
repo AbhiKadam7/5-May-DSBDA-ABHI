@@ -1,0 +1,22 @@
+# Import libraries
+import pandas as pd
+import numpy as np
+# Load dataset
+df = pd.read_csv("data.csv")
+# Grouped statistics
+df.groupby('Category')['Income'].agg(['mean','median','min','max','std'])
+# Create list for each category
+df.groupby('Category')['Income'].apply(list)
+# Load iris dataset
+iris = pd.read_csv("iris.csv")
+iris.head()
+# Filter species
+setosa = iris[iris['species'] == 'Iris-setosa']
+versicolor = iris[iris['species'] == 'Iris-versicolor']
+virginica = iris[iris['species'] == 'Iris-virginica']
+# Statistics for each species
+setosa.describe()
+versicolor.describe()
+virginica.describe()
+# Percentile example
+np.percentile(setosa['sepal_length'], 50)

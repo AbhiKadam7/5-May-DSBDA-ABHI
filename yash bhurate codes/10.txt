@@ -1,0 +1,38 @@
+# Import libraries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load Iris dataset into DataFrame
+iris = sns.load_dataset('iris')
+# Display dataset
+iris.head()
+# 1. List features and their types
+iris.dtypes
+# Feature names
+iris.columns
+# Observation:
+# - sepal_length, sepal_width, petal_length, petal_width → numeric
+# - species → nominal (categorical)
+# 2. Histogram for each feature (explicit)
+plt.hist(iris['sepal_length'])
+plt.title("Sepal Length Distribution")
+plt.show()
+plt.hist(iris['sepal_width'])
+plt.title("Sepal Width Distribution")
+plt.show()
+plt.hist(iris['petal_length'])
+plt.title("Petal Length Distribution")
+plt.show()
+plt.hist(iris['petal_width'])
+plt.title("Petal Width Distribution")
+plt.show()
+# 3. Boxplot for each feature
+iris.plot(kind='box', subplots=True, layout=(2,2))
+plt.suptitle("Boxplot of Iris Features")
+plt.show()
+# 4. Compare distributions and identify outliers
+# Observations:
+# - Sepal features show more overlap in distribution
+# - Petal features show clear separation (useful for classification)
+# - Boxplots show presence of outliers (points outside whiskers)
+# - Petal length and petal width have less variation compared to sepal features
